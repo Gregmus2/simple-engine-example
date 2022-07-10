@@ -1,0 +1,13 @@
+window:
+  w: 1200
+  h: 600
+  title: test
+physics:
+  enable: true
+  scale: 100
+  gravity:
+    x: 0.0
+    y: 0.0
+graphics:
+  scale: 100
+  debug: true
