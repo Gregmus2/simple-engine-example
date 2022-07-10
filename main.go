@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/Gregmus2/simple-engine"
 	physics "github.com/Gregmus2/simple-engine-physics-module"
-	"github.com/Gregmus2/simple-engine/common"
 	"github.com/sirupsen/logrus"
 	"go.uber.org/dig"
 	"runtime"
@@ -22,8 +21,8 @@ func main() {
 		logrus.WithError(err).Fatal("error building DI container")
 	}
 
-	if err := c.Invoke(func(app *engine.App, agents *Agents, actions common.UpdateActionsIn) {
-		app.InitWithScene(agents, actions)
+	if err := c.Invoke(func(app *engine.App, agents *Agents) {
+		app.InitWithScene(agents)
 		app.Loop()
 	}); err != nil {
 		logrus.Fatal(err)
@@ -35,9 +34,6 @@ func buildContainer(c *dig.Container) error {
 		return err
 	}
 	if err := c.Provide(NewAgents); err != nil {
-		return err
-	}
-	if err := c.Provide(NewInit); err != nil {
 		return err
 	}
 

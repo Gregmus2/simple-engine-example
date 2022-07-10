@@ -33,7 +33,7 @@ func (f *ObjectFactory) NewBox(model BoxModel) *Box {
 		phys:  object,
 		w:     float32(model.W),
 		h:     float32(model.H),
-		prog:  graphics.NewProgram(),
+		prog:  f.program,
 		shape: f.shape,
 		color: graphics.White(),
 	}

@@ -41,7 +41,7 @@ func (f *ObjectFactory) NewAgent(x, y float64, p *nnga.Person) *Agent {
 
 	return &Agent{
 		phys:      object,
-		prog:      graphics.NewProgram(),
+		prog:      f.program,
 		shape:     f.shape,
 		color:     graphics.Blue(),
 		lineColor: graphics.White(),

@@ -12,8 +12,9 @@ type ObjectFactory struct {
 	pCfg     *physics.Config
 	gCfg     *common.Config
 	shape    *graphics.ShapeHelper
+	program  *graphics.Program
 }
 
-func NewObjectFactory(f *physics.ObjectFactory, p *physics.Physics, pCfg *physics.Config, shape *graphics.ShapeHelper, gCfg *common.Config) *ObjectFactory {
-	return &ObjectFactory{pFactory: f, phys: p, pCfg: pCfg, shape: shape, gCfg: gCfg}
+func NewObjectFactory(f *physics.ObjectFactory, p *physics.Physics, pCfg *physics.Config, shape *graphics.ShapeHelper, gCfg *common.Config, program *graphics.Program) *ObjectFactory {
+	return &ObjectFactory{pFactory: f, phys: p, pCfg: pCfg, shape: shape, gCfg: gCfg, program: program}
 }

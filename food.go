@@ -26,7 +26,7 @@ func (f *ObjectFactory) NewFood(x, y float64) *Food {
 	return &Food{
 		phys:   object,
 		Radius: float32(radius),
-		prog:   graphics.NewProgram(),
+		prog:   f.program,
 		shape:  f.shape,
 		color:  graphics.Yellow(),
 	}
