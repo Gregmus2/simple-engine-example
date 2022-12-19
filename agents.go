@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/ByteArena/box2d"
 	"github.com/Gregmus2/nnga"
+	"github.com/Gregmus2/simple-engine/common"
 	"github.com/Gregmus2/simple-engine/graphics"
 	"github.com/Gregmus2/simple-engine/scenes"
 	"github.com/patrikeh/go-deep"
@@ -14,7 +15,6 @@ import (
 type Agents struct {
 	scenes.Base
 	factory *ObjectFactory
-	con     *graphics.PercentToPosConverter
 	agents  []*Agent
 	food    []*Food
 	ga      *nnga.GA
@@ -22,11 +22,10 @@ type Agents struct {
 	fixturesToMove []*box2d.B2Fixture
 }
 
-func NewAgents(base scenes.Base, f *ObjectFactory, con *graphics.PercentToPosConverter, w *box2d.B2World) *Agents {
+func NewAgents(base scenes.Base, f *ObjectFactory, w *box2d.B2World) *Agents {
 	agents := &Agents{
 		Base:           base,
 		factory:        f,
-		con:            con,
 		fixturesToMove: make([]*box2d.B2Fixture, 0),
 	}
 	w.SetContactListener(agents)
@@ -41,7 +40,7 @@ func (d *Agents) Init() {
 
 	d.walls()
 
-	d.ga = nnga.NewGA(100, &deep.Config{
+	d.ga = nnga.NewGA(200, &deep.Config{
 		/* Input dimensionality */
 		Inputs: 2,
 		/* Two hidden layers consisting of two neurons each, and a single output */
@@ -68,13 +67,13 @@ func (d *Agents) Init() {
 	})
 
 	for i := 0; i < 50; i++ {
-		food := d.factory.NewFood(float64(rand.Intn(d.Cfg.Window.W)), float64(rand.Intn(d.Cfg.Window.H)))
+		food := d.factory.NewFood(float64(rand.Intn(common.Config.Window.W)), float64(rand.Intn(common.Config.Window.H)))
 		d.DrawObjects.Put(food)
 		d.food = append(d.food, food)
 	}
 
 	for _, person := range d.ga.Persons {
-		agent := d.factory.NewAgent(float64(rand.Intn(d.Cfg.Window.W)), float64(rand.Intn(d.Cfg.Window.H)), person)
+		agent := d.factory.NewAgent(float64(rand.Intn(common.Config.Window.W)), float64(rand.Intn(common.Config.Window.H)), person)
 		d.DrawObjects.Put(agent)
 		d.agents = append(d.agents, agent)
 	}
@@ -113,7 +112,7 @@ func (d *Agents) PreUpdate() {
 	}
 
 	for _, fixture := range d.fixturesToMove {
-		fixture.GetBody().SetTransform(box2d.MakeB2Vec2(float64(rand.Intn(d.Cfg.Window.W))/100, float64(rand.Intn(d.Cfg.Window.H))/100), 0)
+		fixture.GetBody().SetTransform(box2d.MakeB2Vec2(float64(rand.Intn(common.Config.Window.W))/100, float64(rand.Intn(common.Config.Window.H))/100), 0)
 	}
 	if len(d.fixturesToMove) > 0 {
 		d.fixturesToMove = make([]*box2d.B2Fixture, 0)
@@ -135,9 +134,9 @@ func (d *Agents) Update() {
 
 func (d *Agents) walls() {
 	b := BoxModel{
-		X:       d.con.X(50),
+		X:       graphics.PercentToPosX(50),
 		Y:       0,
-		W:       d.con.X(100),
+		W:       graphics.PercentToPosX(100),
 		H:       1,
 		T:       box2d.B2BodyType.B2_staticBody,
 		Color:   graphics.White(),
@@ -145,13 +144,13 @@ func (d *Agents) walls() {
 	}
 	d.DrawObjects.Put(d.factory.NewBox(b))
 
-	b.Y = d.con.Y(100)
+	b.Y = graphics.PercentToPosY(100)
 	d.DrawObjects.Put(d.factory.NewBox(b))
 
-	b.X, b.Y, b.W, b.H = 0, d.con.Y(50), 1, d.con.Y(100)
+	b.X, b.Y, b.W, b.H = 0, graphics.PercentToPosY(50), 1, graphics.PercentToPosY(100)
 	d.DrawObjects.Put(d.factory.NewBox(b))
 
-	b.X = d.con.X(100)
+	b.X = graphics.PercentToPosX(100)
 	d.DrawObjects.Put(d.factory.NewBox(b))
 }
 

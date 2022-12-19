@@ -4,13 +4,10 @@ import (
 	"github.com/ByteArena/box2d"
 	physics "github.com/Gregmus2/simple-engine-physics-module"
 	"github.com/Gregmus2/simple-engine/graphics"
-	"github.com/go-gl/gl/v4.6-core/gl"
 )
 
 type Food struct {
 	phys   *physics.Object
-	prog   *graphics.Program
-	shape  *graphics.ShapeHelper
 	color  graphics.Color
 	Radius float32
 }
@@ -26,17 +23,13 @@ func (f *ObjectFactory) NewFood(x, y float64) *Food {
 	return &Food{
 		phys:   object,
 		Radius: float32(radius),
-		prog:   f.program,
-		shape:  f.shape,
 		color:  graphics.Yellow(),
 	}
 }
 
 func (o *Food) Draw(scale, offsetX, offsetY float32) error {
 	pos := o.phys.Body.GetPosition()
-	o.prog.ApplyProgram(o.color)
-	o.shape.Circle((float32(pos.X)+offsetX)*scale, (float32(pos.Y)+offsetY)*scale, o.Radius)
-	gl.UseProgram(0)
+	graphics.Circle((float32(pos.X)+offsetX)*scale, (float32(pos.Y)+offsetY)*scale, o.Radius, o.color)
 
 	return nil
 }

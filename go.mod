@@ -5,9 +5,8 @@ go 1.18
 require (
 	github.com/ByteArena/box2d v1.0.2
 	github.com/Gregmus2/nnga v1.0.0
-	github.com/Gregmus2/simple-engine v0.2.4
+	github.com/Gregmus2/simple-engine v0.3.0
 	github.com/Gregmus2/simple-engine-physics-module v1.0.5
-	github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7
 	github.com/patrikeh/go-deep v0.0.0-20191210195838-b811ffc4083e
 	github.com/sirupsen/logrus v1.5.0
 	go.uber.org/dig v1.8.0
@@ -15,6 +14,7 @@ require (
 
 require (
 	github.com/creasty/defaults v1.6.0 // indirect
+	github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7 // indirect
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4 // indirect
 	github.com/gonum/blas v0.0.0-20181208220705-f22b278b28ac // indirect
 	github.com/gonum/floats v0.0.0-20181209220543-c233463c7e82 // indirect

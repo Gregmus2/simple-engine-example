@@ -2,12 +2,6 @@ github.com/ByteArena/box2d v1.0.2 h1:f7f9KEQWhCs1n516DMLzi5w6u0MeeE78Mes4fWMcj9k
 github.com/ByteArena/box2d v1.0.2/go.mod h1:LzEuxY9iCz+tskfWCY3o0ywYBRafDDugdSj+/YGI6sE=
 github.com/Gregmus2/nnga v1.0.0 h1:Oi5XPV6uNWkqylCXGHJ6XUQLohXFzNvSxWqXxYUEnDA=
 github.com/Gregmus2/nnga v1.0.0/go.mod h1:bUabnv0Tz5IJmNLKnS8PcUJktL3zXgr/NHUlGc5N2Lw=
-github.com/Gregmus2/simple-engine v0.2.2 h1:G9sH04yM7YHnmFLT0JWzjnwaMcN8BC8Lj7cMh5jV1fE=
-github.com/Gregmus2/simple-engine v0.2.2/go.mod h1:gNQo2YLqNr1BBgZ51QjmRYkFwX6srkB8VG9BKGrU6lY=
-github.com/Gregmus2/simple-engine v0.2.3 h1:ZQ+13M7PDZYUhRJGtaNZ3z22yPPZyGNPB81pNYhhGsw=
-github.com/Gregmus2/simple-engine v0.2.3/go.mod h1:gNQo2YLqNr1BBgZ51QjmRYkFwX6srkB8VG9BKGrU6lY=
-github.com/Gregmus2/simple-engine v0.2.4 h1:tp3RJtPXpBKeXq+pJEtuxn031QpaArAwpis5aoY8gZo=
-github.com/Gregmus2/simple-engine v0.2.4/go.mod h1:gNQo2YLqNr1BBgZ51QjmRYkFwX6srkB8VG9BKGrU6lY=
 github.com/Gregmus2/simple-engine-physics-module v1.0.5 h1:D+P860GZh8xLAmFsZBjuZGPVTYjp07oTlu8SuoFzbvU=
 github.com/Gregmus2/simple-engine-physics-module v1.0.5/go.mod h1:J8YzbZPZKun5SE6zEZqGQ3jNefLPzPMKflA1095SPcM=
 github.com/creasty/defaults v1.6.0 h1:ltuE9cfphUtlrBeomuu8PEyISTXnxqkBIoQfXgv7BSc=

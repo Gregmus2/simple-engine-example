@@ -4,14 +4,11 @@ import (
 	"github.com/ByteArena/box2d"
 	physics "github.com/Gregmus2/simple-engine-physics-module"
 	"github.com/Gregmus2/simple-engine/graphics"
-	"github.com/go-gl/gl/v4.6-core/gl"
 )
 
 type Box struct {
 	w, h  float32
 	phys  *physics.Object
-	prog  *graphics.Program
-	shape *graphics.ShapeHelper
 	color graphics.Color
 }
 
@@ -33,17 +30,13 @@ func (f *ObjectFactory) NewBox(model BoxModel) *Box {
 		phys:  object,
 		w:     float32(model.W),
 		h:     float32(model.H),
-		prog:  f.program,
-		shape: f.shape,
 		color: graphics.White(),
 	}
 }
 
 func (o *Box) Draw(scale, offsetX, offsetY float32) error {
 	pos := o.phys.Body.GetPosition()
-	o.prog.ApplyProgram(o.color)
-	o.shape.Box((float32(pos.X)+offsetX)*scale-o.w/2, (float32(pos.Y)+offsetY)*scale+o.h/2, o.w, o.h)
-	gl.UseProgram(0)
+	graphics.Box((float32(pos.X)+offsetX)*scale-o.w/2, (float32(pos.Y)+offsetY)*scale+o.h/2, o.w, o.h, o.color)
 
 	return nil
 }
