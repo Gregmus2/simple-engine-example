@@ -40,7 +40,7 @@ func (d *Agents) Init() {
 
 	d.walls()
 
-	d.ga = nnga.NewGA(200, &deep.Config{
+	d.ga = nnga.NewGA(100, &deep.Config{
 		/* Input dimensionality */
 		Inputs: 2,
 		/* Two hidden layers consisting of two neurons each, and a single output */
@@ -79,8 +79,8 @@ func (d *Agents) Init() {
 	}
 }
 
-func (d *Agents) PreUpdate() {
-	d.Base.PreUpdate()
+func (d *Agents) PreUpdate(dt int64) {
+	d.Base.PreUpdate(dt)
 	for _, agent := range d.agents {
 		pos := agent.phys.Body.GetPosition()
 		targetPos := d.food[0].phys.Body.GetPosition()
@@ -119,7 +119,7 @@ func (d *Agents) PreUpdate() {
 	}
 }
 
-func (d *Agents) Update() {
+func (d *Agents) Update(_ int64) {
 	for _, agent := range d.agents {
 		pos := agent.phys.Body.GetPosition()
 		distance := math.Sqrt(math.Pow(pos.X-agent.targetPos.X, 2) + math.Pow(pos.Y-agent.targetPos.Y, 2))

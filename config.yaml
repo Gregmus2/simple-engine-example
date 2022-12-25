@@ -9,5 +9,9 @@ physics:
     x: 0.0
     y: 0.0
 graphics:
+  fps: 120
   scale: 100
   debug: true
+  font: Arialn.ttf
+debug:
+  fps: true
